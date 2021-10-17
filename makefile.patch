@@ -1,0 +1,21 @@
+--- makefile	2019-12-02 14:12:58.000000000 +0900
++++ ../../../source/makefile	2021-10-17 16:44:25.000000000 +0900
+@@ -5,10 +5,14 @@
+ #                                                                 #
+ ###################################################################
+ 
+-MKLROOT = /opt/intel/mkl
+-CC = mpicc -O3 -xHOST -ip -no-prec-div -qopenmp -I/opt/intel/mkl/include/fftw
+-FC = mpif90 -O3 -xHOST -ip -no-prec-div -qopenmp 
+-LIB= -L${MKLROOT}/lib/intel64 -lmkl_scalapack_lp64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -lmkl_blacs_openmpi_lp64 -lmpi_usempif08 -lmpi_usempi_ignore_tkr -lmpi_mpifh -liomp5 -lpthread -lm -ldl
++#MKLROOT = /opt/intel/mkl
++MKLROOT = /opt/intel/oneapi/mkl/latest
++CC = mpiicc -cc=icc -O3 -xHOST -ip -no-prec-div -qopenmp -lfftw3
++#CC = mpicc -O3 -xHOST -ip -no-prec-div -qopenmp -I/opt/intel/mkl/include/fftw
++FC = mpiifort -fc=ifort -O3 -xHOST -ip -no-prec-div -qopenmp -lfftw3
++#FC = mpif90 -O3 -xHOST -ip -no-prec-div -qopenmp 
++LIB = -L${MKLROOT}/lib/intel64 -lmkl_scalapack_lp64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -lmkl_blacs_intelmpi_lp64 -liomp5 -lpthread -lm -ldl -lifcore -lfftw3
++#LIB= -L${MKLROOT}/lib/intel64 -lmkl_scalapack_lp64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -lmkl_blacs_openmpi_lp64 -lmpi_usempif08 -lmpi_usempi_ignore_tkr -lmpi_mpifh -liomp5 -lpthread -lm -ldl 
+ 
+ #
+ # System B (Sekirei) at ISSP, Univ. of Tokyo
