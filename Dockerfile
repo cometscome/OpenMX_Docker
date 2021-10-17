@@ -27,6 +27,7 @@ RUN sudo apt install emacs gcc make patch -y \
 
 RUN wget http://t-ozaki.issp.u-tokyo.ac.jp/openmx3.9.tar.gz \
     && wget http://www.openmx-square.org/bugfixed/20Feb11/patch3.9.2.tar.gz \
+    && . /opt/intel/oneapi/setvars.sh \
     && tar -xvf openmx3.9.tar.gz \
     && cp ./patch3.9.2.tar.gz openmx3.9/source/ \
     && cd openmx3.9/source \
