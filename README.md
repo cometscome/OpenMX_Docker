@@ -10,5 +10,5 @@ docker build --shm-size=2gb -t openmx .
 After building it, just do
 
 ```bash
-docker run --shm-size=2gb --name oneopenmx -it openmxone /bin/bash
+docker run --shm-size=2gb --name oneopenmx -it openmx /bin/bash
 ```
